@@ -720,12 +720,7 @@ def edit_and_add():
                     print(f"Error: {str(e)}")
                     return False
 
-            # Load environment variables from .env file
-            load_dotenv()
-            
-            # Retrieve the token
-            github_token = os.getenv('GITHUB_TOKEN')
-
+            github_token = os.environ.get('GITHUB_TOKEN')
             #github_token = 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 # the new one: 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
             username = "bismania-jakarta"
             repo_name = "bismania-jakarta/wespilift"
