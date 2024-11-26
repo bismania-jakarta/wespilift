@@ -4,4 +4,3 @@ openpyxl
 pandasql
 matplotlib
 pygithub
-io
