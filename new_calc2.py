@@ -676,6 +676,7 @@ def edit_and_add():
             # last id_calc in tmycalc in github: 34
             def update_github_csv(github_token, repo_name, file_path, key_column, key_value, update_data):
                 # Initialize GitHub connection
+                #g = Github(login_or_token=username, password=github_token)
                 g = Github(github_token)
                 st.write('Here1 in funct update github, token:', github_token)
                 repo = g.get_repo(repo_name)
@@ -715,7 +716,8 @@ def edit_and_add():
                     print(f"Error: {str(e)}")
                     return False
 
-            github_token = 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
+            #github_token = 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
+            github_token = os.environ.get('GITHUB_TOKEN')
             repo_name = "bismania-jakarta/wespilift"
             #file_path = "path/to/tmycalc.csv"
             file_path = "github.com/bismania-jakarta/wespilift/blob/main/tmycalc.csv"
