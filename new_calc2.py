@@ -7,6 +7,7 @@ from datetime import datetime
 from github import Github
 import base64
 from io import StringIO
+import os
 
 #open datas
 mnomor1 = pd.read_csv('MNomor1.csv')
@@ -669,7 +670,8 @@ def edit_and_add():
             #    'psd': _psd, 'whp': _whp, 'psd_md': _psd_md, 'p_casing': _p_casing, 'pb': _pb, 'api': st.session_state._api, 'sgo': st.session_state._sgo, \
             #    'id_casing_size': _id_casing_size, 'id_tubing_size': _id_tubing_size, 'id_tubing_id': _id_tubing_id, \
             #    'id_tubing_coeff': _id_tubing_coeff, 'liner_id': _liner_id, 'top_liner_at_tvd': _top_liner_at_tvd, 'top_liner_at_md': _top_liner_at_md, \
-            #    'bottom_liner_at_tvd': _bottom_liner_at_tvd, 'bottom_liner_at_md': _bottom_liner_at_md})                    
+            #    'bottom_liner_at_tvd': _bottom_liner_at_tvd, 'bottom_liner_at_md': _bottom_liner_at_md})       
+                                     
 
             # last id_calc in tmycalc in github: 34
             def update_github_csv(github_token, repo_name, file_path, key_column, key_value, update_data):
@@ -711,8 +713,7 @@ def edit_and_add():
                     print(f"Error: {str(e)}")
                     return False
 
-            # Example usage
-            github_token = "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"
+            github_token = os.environ.get('GITHUB_TOKEN')
             repo_name = "bismania-jakarta/wespilift"
             #file_path = "path/to/tmycalc.csv"
             file_path = "github.com/bismania-jakarta/wespilift/blob/main/tmycalc.csv"
@@ -735,6 +736,67 @@ def edit_and_add():
                 st.session_state['id_calc_02'],     # value to match in key column
                 update_data
             )
+
+# ------- when update coding in github using git in termiaal below ------------------------------------------
+#(base) bosi@bsUb2204LTS64:~/Documents/StrealitYT-CodingIsFun/wespi-main$ git status
+#On branch main
+#Your branch is up to date with 'origin/main'.
+
+#nothing to commit, working tree clean
+#(base) bosi@bsUb2204LTS64:~/Documents/StrealitYT-CodingIsFun/wespi-main$ git add .
+#(base) bosi@bsUb2204LTS64:~/Documents/StrealitYT-CodingIsFun/wespi-main$ git commit -m "update start line 645"
+#[main 6178a90] update start line 645
+# 2 files changed, 1838 insertions(+), 11 deletions(-)
+# create mode 100644 new_calc2_b4update4github.py
+#(base) bosi@bsUb2204LTS64:~/Documents/StrealitYT-CodingIsFun/wespi-main$ git push
+#To https://github.com/bismania-jakarta/wespilift.git
+# ! [rejected]        main -> main (fetch first)
+#error: failed to push some refs to 'https://github.com/bismania-jakarta/wespilift.git'
+#hint: Updates were rejected because the remote contains work that you do not
+#hint: have locally. This is usually caused by another repository pushing to
+#hint: the same ref. If you want to integrate the remote changes, use
+#hint: 'git pull' before pushing again.
+#hint: See the 'Note about fast-forwards' in 'git push --help' for details.
+#(base) bosi@bsUb2204LTS64:~/Documents/StrealitYT-CodingIsFun/wespi-main$ git pull
+#remote: Enumerating objects: 5, done.
+#remote: Counting objects: 100% (5/5), done.
+#remote: Compressing objects: 100% (3/3), done.
+#remote: Total 3 (delta 1), reused 0 (delta 0), pack-reused 0 (from 0)
+#Unpacking objects: 100% (3/3), 961 bytes | 240.00 KiB/s, done.
+#From https://github.com/bismania-jakarta/wespilift
+#   8b05d57..aa9facf  main       -> origin/main
+#hint: You have divergent branches and need to specify how to reconcile them.
+#hint: You can do so by running one of the following commands sometime before
+#hint: your next pull:
+#hint:
+#hint:   git config pull.rebase false  # merge
+#hint:   git config pull.rebase true   # rebase
+#hint:   git config pull.ff only       # fast-forward only
+#hint:
+#hint: You can replace "git config" with "git config --global" to set a default
+#hint: preference for all repositories. You can also pass --rebase, --no-rebase,
+#hint: or --ff-only on the command line to override the configured default per
+#hint: invocation.
+#fatal: Need to specify how to reconcile divergent branches.
+#(base) bosi@bsUb2204LTS64:~/Documents/StrealitYT-CodingIsFun/wespi-main$ git config --global
+#error: no action specified
+#(base) bosi@bsUb2204LTS64:~/Documents/StrealitYT-CodingIsFun/wespi-main$ git config pull.rebase false
+#(base) bosi@bsUb2204LTS64:~/Documents/StrealitYT-CodingIsFun/wespi-main$ git pull
+#Merge made by the 'ort' strategy.
+# requirements.txt | 1 +
+# 1 file changed, 1 insertion(+)
+#(base) bosi@bsUb2204LTS64:~/Documents/StrealitYT-CodingIsFun/wespi-main$ git push
+#Enumerating objects: 10, done.
+#Counting objects: 100% (9/9), done.
+#Delta compression using up to 8 threads
+#Compressing objects: 100% (6/6), done.
+#Writing objects: 100% (6/6), 13.31 KiB | 2.66 MiB/s, done.
+#Total 6 (delta 3), reused 0 (delta 0), pack-reused 0 (from 0)
+#remote: Resolving deltas: 100% (3/3), completed with 2 local objects.
+#To https://github.com/bismania-jakarta/wespilift.git
+#   aa9facf..bb4e81a  main -> main
+#(base) bosi@bsUb2204LTS64:~/Documents/StrealitYT-CodingIsFun/wespi-main$ 
+# ------------ until here using git config pull.rebase false before git pull and git push ---------------------------------------------------------------------
 
             if st.button("Next"):      
                 wellnamesearch=''
