@@ -719,12 +719,12 @@ def edit_and_add():
                     print(f"Error: {str(e)}")
                     return False
 
-            #github_token = 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
-            github_token = os.environ.get('GITHUB_TOKEN')
+            github_token = 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
+            #github_token = os.environ.get('GITHUB_TOKEN')
 
-            from dotenv import load_dotenv
-            load_dotenv()
-            github_token = os.getenv('GITHUB_TOKEN')
+            #from dotenv import load_dotenv
+            #load_dotenv()
+            #github_token = os.getenv('GITHUB_TOKEN')
 
             username = "bismania-jakarta"
             repo_name = "bismania-jakarta/wespilift"
