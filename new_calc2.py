@@ -681,8 +681,8 @@ def edit_and_add():
                 #g=Github()
                 #user=g.get_user(username)
                 st.write('Here1 in funct update github, token:', github_token)
-                #repo = g.get_repo(repo_name)
-                repo = user.get_repo(repo_name)
+                repo = g.get_repo(repo_name)
+                #repo = user.get_repo(repo_name)
                 st.write('Here1 in funct update github, repo name:', repo)
                 
                 try:
@@ -720,6 +720,15 @@ def edit_and_add():
                     return False
 
             github_token = os.environ.get('GITHUB_TOKEN')
+                # Method 2: Try loading from .env (for local development)
+            if not github_token:
+                try:
+                    from dotenv import load_dotenv
+                    load_dotenv()
+                    github_token = os.getenv('GITHUB_TOKEN')
+                except ImportError:
+                    pass
+            
             #github_token = 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 # the new one: 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
             username = "bismania-jakarta"
             repo_name = "bismania-jakarta/wespilift"
