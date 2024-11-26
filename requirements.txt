@@ -5,6 +5,5 @@ pandasql
 matplotlib
 pygithub
 datetime
-csv
 base64
 io
