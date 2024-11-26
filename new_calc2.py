@@ -8,6 +8,7 @@ from github import Github
 import base64
 from io import StringIO
 import os
+from dotenv import load_dotenv
 
 #open datas
 mnomor1 = pd.read_csv('MNomor1.csv')
@@ -676,10 +677,10 @@ def edit_and_add():
             # last id_calc in tmycalc in github: 34
             def update_github_csv(github_token, username, repo_name, file_path, key_column, key_value, update_data):
                 # Initialize GitHub connection
-                #g = Github(login_or_token=username, password=github_token)
+                g = Github(login_or_token=username, password=github_token)
                 #g = Github(github_token)
-                g=Github()
-                user=g.get_user(username)
+                #g=Github()
+                #user=g.get_user(username)
                 st.write('Here1 in funct update github, token:', github_token)
                 #repo = g.get_repo(repo_name)
                 repo = user.get_repo(repo_name)
@@ -719,13 +720,13 @@ def edit_and_add():
                     print(f"Error: {str(e)}")
                     return False
 
-            github_token = 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
-            #github_token = os.environ.get('GITHUB_TOKEN')
+            # Load environment variables from .env file
+            load_dotenv()
+            
+            # Retrieve the token
+            github_token = os.getenv('GITHUB_TOKEN')
 
-            #from dotenv import load_dotenv
-            #load_dotenv()
-            #github_token = os.getenv('GITHUB_TOKEN')
-
+            #github_token = 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 # the new one: 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
             username = "bismania-jakarta"
             repo_name = "bismania-jakarta/wespilift"
             file_path = "path/to/tmycalc.csv"
