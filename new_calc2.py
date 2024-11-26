@@ -8,7 +8,6 @@ from github import Github
 import base64
 from io import StringIO
 import os
-from dotenv import load_dotenv
 
 #open datas
 mnomor1 = pd.read_csv('MNomor1.csv')
