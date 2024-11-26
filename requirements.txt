@@ -4,5 +4,4 @@ openpyxl
 pandasql
 matplotlib
 pygithub
-datetime
 io
