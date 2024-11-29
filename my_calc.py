@@ -5,9 +5,6 @@ import matplotlib.pyplot as plt
 from new_calc2 import edit_and_add
 from sessions import sessionstates
 from my_calcb import my_calc_straight
-#the token hello.py on bismania-jakarta github: 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
-#the token hello.py on bismania-jakarta github: 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
-#git remote set-url origin https://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@github.com/bismania-jakarta/hello_test
 
 mnomor1 = pd.read_csv('MNomor1.csv')
 tmycalc = pd.read_csv('tmycalc.csv')
